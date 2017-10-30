@@ -20,6 +20,84 @@ public class VarastoTest {
         varasto = new Varasto(10);
     }
 
+    /*
+    OHTU TESTIT BEGIN
+    OHTU TESTIT BEGIN
+    OHTU TESTIT BEGIN
+    OHTU TESTIT BEGIN
+    OHTU TESTIT BEGIN
+    OHTU TESTIT BEGIN
+    OHTU TESTIT BEGIN
+    OHTU TESTIT BEGIN
+    OHTU TESTIT BEGIN
+    OHTU TESTIT BEGIN
+     */
+    //TESTATAAN ERI KONSTRUKTOREILLA
+    @Test
+    public void negatiivinenTilavuusLuoKayttoKelvottomanVaraston() {
+        varasto = new Varasto(-1);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void negatiivinenTilavuusKuormitetulleKonstruktorilleEiToimi() {
+        varasto = new Varasto(-1, 0);
+        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void toimivaPuoliTyhjaVarasto() {
+        varasto = new Varasto(10, 5);
+        assertEquals(5, varasto.paljonkoMahtuu(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void kuormitetunVarastonAlkuSaldoEiVoiOllaNegatiivinen() {
+        varasto = new Varasto(10, -100);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void varastostaEiVoiOttaaLiikaa() {
+        varasto.otaVarastosta(15);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void varastostaEiVoiOttaaOlematonta() {
+        assertEquals(0, varasto.otaVarastosta(-1), vertailuTarkkuus);
+    }
+
+    @Test
+    public void varastoEiPursuaYli() {
+        varasto.lisaaVarastoon(50);
+        assertEquals(10, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void varastonSaldoEiKasvaJosLisataanNegatiivinenMaaraSaldoa() {
+        varasto.lisaaVarastoon(-1);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+    }
+
+    @Test
+    public void varastonMerkkiJonoEsitysToimii() {
+        varasto.lisaaVarastoon(3);
+        assertEquals("saldo = " + 3.0 + ", vielä tilaa " + 7.0, varasto.toString());
+    }
+
+    /*
+    OHTU TESTIT END
+    OHTU TESTIT END
+    OHTU TESTIT END
+    OHTU TESTIT END
+    OHTU TESTIT END
+    OHTU TESTIT END
+    OHTU TESTIT END
+    OHTU TESTIT END
+    OHTU TESTIT END
+    OHTU TESTIT END
+     */
     @Test
     public void konstruktoriLuoTyhjanVaraston() {
         assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
