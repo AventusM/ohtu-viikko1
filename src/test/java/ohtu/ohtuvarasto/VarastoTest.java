@@ -108,12 +108,15 @@ public class VarastoTest {
         assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
     }
 
+    /*
+    PILATAAN TESTI Tehtävään 10
+    */
     @Test
-    public void lisaysLisaaSaldoa() {
+    public void lisaysLisaaSaldoaPILATTU() {
         varasto.lisaaVarastoon(8);
 
         // saldon pitäisi olla sama kun lisätty määrä
-        assertEquals(8, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
